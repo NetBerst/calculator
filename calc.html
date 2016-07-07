@@ -3,20 +3,67 @@
 <head>
     <meta charset="utf-8">
     <title>Тут когда-нибудь будет рабочий калькулятор</title>
-     </head>
-    <body>
-    <input type="button" id="button" value="0">
-    <input type="button" id="button" value="1">
-    <input type="button" id="button" value="2">
-    <input type="button" id="button" value="3">
-    <input type="text" id="text" size="60">
-
-<script>
-
-  button.onclick = function() {
-    text.value += "tutut";
-  };
-
-</script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+    </head>
+<body>
+    <input type="text" id="result" value="" placeholder="результат" readonly><br><br>
+    <form id= "num">
+        <input type="button" value="0">
+        <input type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="4">
+        <br>
+        <input type="button" value="5">
+        <input type="button" value="6">
+        <input type="button" value="7">
+        <input type="button" value="8">
+        <input type="button" value="9">
+        <br>
+        <input type="button" value="+">
+        <input type="button" value="-">
+        <input type="button" value="*">
+        <input type="button" value="/">
+        
+    </form>
+        <input type="button" id="clean" value="c">
+        <input type="button" id="cleanElm" value="ce">
+        <br>
+        <input type="button" id="equally" value="=">
+    
+    <!--<script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/bootstrap.js"></script> -->
+    
+    <script>
+        var form = document.getElementById("num");
+        var result = document.getElementById("result");
+        var equ = document.getElementById("equally");
+        var cle = document.getElementById("clean");
+        var clElm = document.getElementById("cleanElm");
+        
+        clElm.addEventListener("click",fcleanElm);
+        cle.addEventListener("click",fclean);
+        equ.addEventListener("click",consider);
+        
+        function fcleanElm(){
+            result.value = result.value.slice(0,-1)
+        }
+        function fclean (){
+            result.value = '';
+        }
+        
+        function consider(){
+            result.value = eval(result.value)
+        }
+        
+        form.onclick = function(e){
+            var target = e.target;
+            if (target.tagName == 'INPUT'){
+            result.value += target.value;
+            }
+        };
+    </script>
+    
     </body>
 </html>
